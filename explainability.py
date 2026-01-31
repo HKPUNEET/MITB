@@ -79,26 +79,36 @@ def overlay_heatmap_on_image(heatmap, img_path, alpha=0.4, colormap=cv2.COLORMAP
     # Overlay on original high-res image
     overlaid = cv2.addWeighted(img, 1 - alpha, heatmap_colored, alpha, 0)
 
-    # Optional: add colorbar (nice for demo) — using Agg backend
     if add_colorbar:
         fig = plt.figure(figsize=(6, 4))
-        canvas = FigureCanvas(fig)  # ← Now works after correct import
+        canvas = FigureCanvas(fig)
         ax = fig.add_subplot(111)
         im = ax.imshow(overlaid)
         cbar = fig.colorbar(im, ax=ax, orientation='vertical')
         cbar.set_label('Model Attention (Red = High)')
         ax.axis('off')
 
+        # Tight layout to minimize whitespace
+        fig.tight_layout(pad=0)
+
         canvas.draw()
 
         buf = canvas.buffer_rgba()
         rgba_array = np.asarray(buf)
-        rgb_array = rgba_array[..., :3]  # drop alpha if you want pure RGB
 
+        # Optional: crop to non-transparent content if padding appears
+        # alpha = rgba_array[..., 3]
+        # non_zero = np.where(alpha > 0)
+        # if non_zero[0].size > 0:
+        #     min_y, max_y = non_zero[0].min(), non_zero[0].max()
+        #     min_x, max_x = non_zero[1].min(), non_zero[1].max()
+        #     rgba_array = rgba_array[min_y:max_y+1, min_x:max_x+1]
+
+        rgb_array = rgba_array[..., :3]
         plt.close(fig)
         return rgb_array
-
-    return overlaid
+    else:
+        return overlaid
 
 
 # ────────────────────────────────────────────────────────────────
