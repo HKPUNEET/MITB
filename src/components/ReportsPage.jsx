@@ -474,8 +474,8 @@ const ReportsPage = ({ onPageChange }) => {
                     {checkForPneumonia(analysisResult) ? (
                       <div className="pneumonia-detected">
                         <p className="pneumonia-warning">⚠️ Pneumonia indicators detected</p>
-                        <button className="analyze-images-btn pneumonia-btn" onClick={() => window.location.href = '#analyze'}>
-                          🩻 Analyze with X-ray
+                        <button className="analyze-images-btn pneumonia-btn" onClick={() => onPageChange('analyze')}>
+                          🔬 Analyze Images
                         </button>
                       </div>
                     ) : (

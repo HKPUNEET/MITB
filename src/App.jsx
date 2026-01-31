@@ -35,10 +35,10 @@ function App() {
           <ResultsPage results={currentResults} />
         )}
         {currentPage === 'assesment' && (
-          <QuizComponent />
+          <QuizComponent onPageChange={handlePageChange} />
         )}
         {currentPage === 'reports' && (
-          <ReportsPage />
+          <ReportsPage onPageChange={handlePageChange} />
         )}
       </div>
     </div>

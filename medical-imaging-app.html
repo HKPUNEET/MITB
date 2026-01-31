@@ -651,7 +651,7 @@
 
                     <div style="margin-top: 2rem; text-align: center;">
                         <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeImages()" disabled>
-                            🔍 Analyze X-Ray
+                            🔍 Analyze Images
                         </button>
                     </div>
 
@@ -914,33 +914,8 @@
 
         // Simulate Analysis (In real app, this would call your backend API)
         function analyzeImages() {
-            const loading = document.getElementById('loading');
-            loading.classList.add('active');
-            analyzeBtn.disabled = true;
-
-            // Simulate AI processing
-            setTimeout(() => {
-                loading.classList.remove('active');
-                analyzeBtn.disabled = false;
-
-                // Generate mock results
-                const diagnoses = ['Normal', 'Bacterial Pneumonia', 'Viral Pneumonia'];
-                const diagnosis = diagnoses[Math.floor(Math.random() * diagnoses.length)];
-                const confidence = (85 + Math.random() * 13).toFixed(1);
-
-                currentResults = {
-                    image: uploadedImages[0],
-                    diagnosis: diagnosis,
-                    confidence: confidence
-                };
-
-                displayResults();
-                showPage('results');
-                
-                // Update nav to results
-                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-                document.querySelectorAll('.nav-item')[2].classList.add('active');
-            }, 3000);
+            // Navigate to the React app's analyze page
+            window.location.href = '/index.html';
         }
 
         function displayResults() {
