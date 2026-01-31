@@ -13,7 +13,7 @@ except ImportError:
     vit = None
     print("vit-keras not installed — ViT will be skipped. Install with: pip install vit-keras")
 
-def build_resnet_model(learning_rate=0.001, seed=42):
+def build_resnet_model(learning_rate=0.001, seed=42,num_classes=2):
     """
     Builds ResNet50-based model (baseline).
     """
@@ -21,7 +21,7 @@ def build_resnet_model(learning_rate=0.001, seed=42):
     base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
     x = GlobalAveragePooling2D()(base_model.output)
     x = Dense(128, activation='relu')(x)
-    output = Dense(3, activation='softmax')(x)  # 0-Normal, 1-Bacterial, 2-Viral
+    output = Dense(num_classes, activation='softmax')(x) # 0-Normal, 1-Bacterial, 2-Viral
     model = Model(inputs=base_model.input, outputs=output)
 
     for layer in base_model.layers:
@@ -32,7 +32,7 @@ def build_resnet_model(learning_rate=0.001, seed=42):
                   metrics=['accuracy', 'Recall'])
     return model
 
-def build_efficientnet_model(learning_rate=0.001, seed=43):
+def build_efficientnet_model(learning_rate=0.001, seed=43, num_classes=2):
     """
     Builds EfficientNetV2-S model (stronger & more efficient).
     """
@@ -40,7 +40,7 @@ def build_efficientnet_model(learning_rate=0.001, seed=43):
     base_model = EfficientNetV2S(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
     x = GlobalAveragePooling2D()(base_model.output)
     x = Dense(128, activation='relu')(x)
-    output = Dense(3, activation='softmax')(x)
+    output = Dense(num_classes, activation='softmax')(x)   # ← changed from 3 to num_classes
     model = Model(inputs=base_model.input, outputs=output)
 
     for layer in base_model.layers:
@@ -51,7 +51,7 @@ def build_efficientnet_model(learning_rate=0.001, seed=43):
                   metrics=['accuracy', 'Recall'])
     return model
 
-def build_vit_tiny_model(learning_rate=0.0005, seed=44):
+def build_vit_tiny_model(learning_rate=0.0005, seed=44,num_classes=2):
     """
     Builds lightweight ViT-Tiny (if vit-keras installed).
     """
@@ -63,7 +63,7 @@ def build_vit_tiny_model(learning_rate=0.0005, seed=44):
     model = vit.vit_tiny(
         image_size=224,
         patch_size=16,
-        num_classes=3,
+        num_classes=num_classes,
         activation='softmax',
         pretrained=True,
         include_top=True,
