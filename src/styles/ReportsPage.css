@@ -1,0 +1,43 @@
+.no-reports {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.report-info {
+  padding: 1.5rem;
+  background: var(--bg-main);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+  animation: slideUp 0.4s ease;
+}
+
+.report-info h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.upload-date {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.report-summary-box {
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.report-summary-box h5 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.report-summary-box p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}

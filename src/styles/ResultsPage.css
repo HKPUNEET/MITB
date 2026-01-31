@@ -1,0 +1,149 @@
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.result-image-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--bg-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heatmap-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heatmap-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(255, 107, 107, 0.1);
+  border-left: 3px solid var(--danger);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.diagnosis-card {
+  grid-column: 1 / -1;
+}
+
+.diagnosis-content {
+  animation: fadeIn 0.6s ease;
+}
+
+.diagnosis-badge {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.diagnosis-normal {
+  background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 212, 170, 0.3);
+}
+
+.diagnosis-bacterial {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.diagnosis-viral {
+  background: linear-gradient(135deg, #ffb347 0%, #ffa62b 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-main);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-light), var(--accent));
+  border-radius: 10px;
+  transition: width 1s ease;
+  animation: fillBar 1.5s ease;
+}
+
+@keyframes fillBar {
+  from {
+    width: 0%;
+  }
+}
+
+.confidence-percentage {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--primary);
+}
+
+.recommendation-box {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: var(--bg-main);
+  border-radius: 8px;
+}
+
+.recommendation-box h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.recommendation-box p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+}
+
+.no-results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-results h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
