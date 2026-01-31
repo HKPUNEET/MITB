@@ -41,7 +41,7 @@ const Home = () => {
           'Pleural effusion detected',
           'Cardiac silhouette regular'
         ],
-        riskHistory: [
+        riskTrend: [
           { day: 'M', value: 30 },
           { day: 'T', value: 45 },
           { day: 'W', value: 55 },
@@ -249,7 +249,7 @@ const Home = () => {
                     Infection Density Trend
                   </h3>
                   <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={result.riskHistory}>
+                    <LineChart data={result.riskTrend}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#333" vertical={false} />
                       <XAxis dataKey="day" stroke="#666" tickLine={false} axisLine={false} />
                       <YAxis stroke="#666" tickLine={false} axisLine={false} hide />

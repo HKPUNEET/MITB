@@ -3,10 +3,11 @@ import Sidebar from './components/Sidebar';
 import AnalyzePage from './components/AnalyzePage';
 import ResultsPage from './components/ResultsPage';
 import ReportsPage from './components/ReportsPage';
+import QuizComponent from './components/QuizComponent';
 import './styles/App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('analyze');
+  const [currentPage, setCurrentPage] = useState('assesment');
   const [uploadedImages, setUploadedImages] = useState([]);
   const [currentResults, setCurrentResults] = useState(null);
 
@@ -32,6 +33,9 @@ function App() {
         )}
         {currentPage === 'results' && (
           <ResultsPage results={currentResults} />
+        )}
+        {currentPage === 'assesment' && (
+          <QuizComponent onPageChange={handlePageChange} />
         )}
         {currentPage === 'reports' && (
           <ReportsPage />

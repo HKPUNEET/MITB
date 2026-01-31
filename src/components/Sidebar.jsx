@@ -3,12 +3,11 @@ import '../styles/Sidebar.css';
 
 const Sidebar = ({ currentPage, onPageChange }) => {
   const navItems = [
-    { id: 'dashboard', icon: '📊', text: 'Dashboard' },
+    { id: 'assesment',icon: '📝', text: 'Assessment'},
     { id: 'analyze', icon: '🔬', text: 'Analyze Images' },
     { id: 'results', icon: '📋', text: 'Results' },
-    { id: 'reports', icon: '📄', text: 'Reports' },
-    { id: 'history', icon: '🕒', text: 'History' },
-    { id: 'settings', icon: '⚙️', text: 'Settings' }
+    { id: 'reports', icon: '📄', text: 'Reports' }
+
   ];
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileText, Activity, Settings, User } from 'lucide-react';
+import { LayoutDashboard, FileText, Activity, User } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Sidebar = () => {
@@ -44,10 +44,6 @@ const Sidebar = () => {
       </nav>
 
       <div className="p-4 border-t border-white/10">
-        <button className="flex items-center gap-3 w-full px-4 py-3 rounded-xl text-gray-400 hover:bg-white/5 hover:text-white transition-all">
-          <Settings className="w-5 h-5" />
-          <span className="font-medium">Settings</span>
-        </button>
         <div className="mt-4 flex items-center gap-3 px-4">
           <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500" />
           <div className="flex flex-col">
