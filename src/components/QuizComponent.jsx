@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/QuizComponent.css';
 
-const QuizComponent = ({ onPageChange }) => {
+const QuizComponent = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [showResult, setShowResult] = useState(false);
@@ -151,7 +151,9 @@ const QuizComponent = ({ onPageChange }) => {
   };
 
   const handleRestart = () => {
-    onPageChange('analyze');
+    setCurrentQuestion(0);
+    setAnswers({});
+    setShowResult(false);
   };
 
   if (showResult) {
@@ -167,7 +169,7 @@ const QuizComponent = ({ onPageChange }) => {
 
           <div className="quiz-actions">
             <button className="btn btn-primary" onClick={handleRestart}>
-               Analyze Images
+               Restart Assessment
             </button>
           </div>
         </div>
