@@ -3,13 +3,31 @@
 pandas>=2.0.0
 numpy>=1.24.0
 matplotlib>=3.7.0
+seaborn>=0.13.0               # nicer statistical plots (optional but useful)
 
-# Machine Learning & modeling
-scikit-learn>=1.3.0          # Linear/Logistic Regression, RandomForest, DecisionTree, KMeans, metrics, etc.
-xgboost>=2.0.0               # XGBoost models
+# Image processing & computer vision
+opencv-python>=4.8.0          # cv2 - image loading, resizing, heatmap overlay
+Pillow>=10.0.0                # PIL - alternative image handling
 
-# Deep Learning (PyTorch neural network example)
-torch>=2.0.0                 # Includes torchvision & torchaudio by default in most installs
+# Deep Learning (for pneumonia detection)
+tensorflow>=2.15.0            # or tensorflow-cpu if you don't have GPU
+# torch>=2.0.0                # only if you prefer PyTorch instead of TensorFlow
 
-# Optional / nice-to-have (uncomment if you want tree visualization)
-# graphviz>=0.20.0           # For exporting decision tree graphs (needs system graphviz binary too)
+# Machine Learning utilities
+scikit-learn>=1.3.0           # metrics, train-test split, scaling, etc.
+xgboost>=2.0.0                # optional - useful for fronthaul capacity estimation
+
+# Web UI
+streamlit>=1.35.0             # main UI framework
+
+# Google Gemini API (for symptom mapping from free text)
+google-generativeai>=0.7.0    # official Gemini SDK
+
+# Optional / helpful utilities
+jupyter>=1.0.0                # for interactive notebooks
+tqdm>=4.66.0                  # nice progress bars
+python-dotenv>=1.0.0          # to load .env file with GOOGLE_API_KEY
+
+
+vit-keras>=0.1.0           # For ViT-Tiny (optional but recommended)
+timm>=0.9.0                # Alternative if vit-keras fails (has DeiT-Tiny)
