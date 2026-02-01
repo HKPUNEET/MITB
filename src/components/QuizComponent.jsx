@@ -163,13 +163,18 @@ const QuizComponent = ({ onPageChange }) => {
     return (
       <div className="quiz-container">
         <div className="quiz-card">
-          <h1 className="quiz-title">Thank You</h1>
-          <p className="quiz-description">
-            Your responses have been recorded. Please proceed for further evaluation.
-          </p>
-          <button className="btn btn-primary" onClick={handleRestart}>
-            Analyze Images
-          </button>
+          <div className="quiz-header">
+            <h1 className="quiz-title"> Thank You!</h1>
+            <p className="quiz-description">
+              Thank you for answering the assessment. Your responses have been recorded.
+            </p>
+          </div>
+
+          <div className="quiz-actions">
+            <button className="btn btn-primary" onClick={analyzeImages}>
+               Analyze Images
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -197,33 +202,62 @@ const QuizComponent = ({ onPageChange }) => {
         </div>
 
         <div className="progress-container">
-          <span>Question {currentQuestion + 1} of {questions.length}</span>
+          <div className="progress-info">
+            <span>Question {currentQuestion + 1} of {questions.length}</span>
+            <span>{Math.round(progress)}% Complete</span>
+          </div>
           <div className="progress-bar">
-            <div className="progress-fill" style={{ width: `${progress}%` }} />
+            <div 
+              className="progress-fill" 
+              style={{ width: `${progress}%` }}
+            ></div>
           </div>
         </div>
 
         <h2 className="question-text">{currentQ.question}</h2>
 
-        <div className="options-container">
-          {currentQ.options.map((option, index) => (
-            <label key={index} className={`option-label ${answers[currentQ.id] === option ? 'selected' : ''}`}>
-              <input
-                type="radio"
-                checked={answers[currentQ.id] === option}
-                onChange={() => handleAnswer(currentQ.id, option)}
-              />
-              {option}
-            </label>
-          ))}
+        <div className="question-container">
+          <div className="question-header">
+            <span className="question-badge">Question {currentQuestion + 1}</span>
+          </div>
+          <h2 className="question-text">{currentQ.question}</h2>
+
+          <div className="options-container">
+            {currentQ.options.map((option, index) => (
+              <label 
+                key={index} 
+                className={`option-label ${answers[currentQ.id] === option ? 'selected' : ''}`}
+              >
+                <input
+                  type="radio"
+                  name={`question-${currentQ.id}`}
+                  value={option}
+                  checked={answers[currentQ.id] === option}
+                  onChange={() => handleAnswer(currentQ.id, option)}
+                />
+                <span className="option-text">{option}</span>
+                <span className="option-check">
+                  {answers[currentQ.id] === option && '✓'}
+                </span>
+              </label>
+            ))}
+          </div>
         </div>
 
         <div className="quiz-actions">
-          <button onClick={handlePrevious} disabled={currentQuestion === 0}>
+          <button 
+            className="btn btn-secondary" 
+            onClick={handlePrevious}
+            disabled={currentQuestion === 0}
+          >
             ← Previous
           </button>
-          <button onClick={handleNext} disabled={!answers[currentQ.id]}>
-            {currentQuestion === questions.length - 1 ? 'Complete' : 'Next →'}
+          <button 
+            className="btn btn-primary" 
+            onClick={handleNext}
+            disabled={!answers[currentQ.id]}
+          >
+            {currentQuestion === questions.length - 1 ? 'Complete' : 'Next'} →
           </button>
         </div>
       </div>
